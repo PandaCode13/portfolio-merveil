@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merveil MAVOUNGOU | Business Manager & Strategist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange-color: #fb9b3c;
+            --white-color: #ffffff;
+            --black-color: #000000;
+            --blue-cyan-color: #00bbff;
+            --gray-light: #f5f7fa;
+            --gray-medium: #6c757d;
+            --gray-dark: #343a40;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-dark);
+            background-color: var(--white-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--black-color);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--orange-color);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--blue-cyan-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--black-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--black-color);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--orange-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--gray-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--orange-color);
+        }
+
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--orange-color);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--black-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(251, 155, 60, 0.05) 0%, rgba(0, 187, 255, 0.05) 100%);
+            padding: 150px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: var(--orange-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-medium);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--orange-color);
+            color: var(--white-color);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--orange-color);
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--orange-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(251, 155, 60, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--orange-color);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--orange-color);
+            color: var(--white-color);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--gray-light);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-highlights {
+            flex: 1;
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .highlight-icon {
+            color: var(--orange-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-card h3 {
+            color: var(--blue-cyan-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--orange-color);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--orange-color);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-date {
+            flex: 1;
+            padding: 0 20px;
+            text-align: right;
+            font-weight: 600;
+            color: var(--orange-color);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date {
+            text-align: left;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding: 20px;
+            background-color: var(--white-color);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .timeline-content:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--blue-cyan-color);
+            border-radius: 50%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content:before {
+            right: -40px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content:before {
+            left: -40px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--gray-light);
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-card {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .contact-form {
+            flex: 2;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--orange-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black-color);
+            color: var(--white-color);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--white-color);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--orange-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .timeline:before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+                margin-left: 60px;
+            }
+
+            .timeline-date {
+                text-align: left !important;
+                flex: 0 0 100px;
+                padding: 0;
+                margin-right: 20px;
+            }
+
+            .timeline-content:before {
+                left: -50px !important;
+                right: auto !important;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background-color: var(--white-color);
+                width: 80%;
+                height: calc(100vh - 70px);
+                padding: 40px 20px;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+
+            .hero {
+                padding: 130px 0 60px;
+            }
+
+            .btn {
+                display: block;
+                margin-bottom: 15px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">M<span>M</span></a>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#expertises">Expertises</a></li>
+                <li><a href="#experiences">Expériences</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="title">Business Manager | Sales & Operations Strategist</span>
+                    <h1>Merveil <span style="color: var(--orange-color);">MAVOUNGOU</span></h1>
+                    <p class="subtitle">J'accompagne dirigeants et fondateurs à transformer leur vision en machine de croissance opérationnelle. Structuration commerciale B2B, excellence opérationnelle et mise en place d'outils d'automatisation pragmatiques.</p>
+                    <a href="#contact" class="btn">Contactez-moi</a>
+                    <a href="#experiences" class="btn btn-outline">Voir mes réalisations</a>
+                </div>
+                <div class="hero-image">
+                    <img src="Photo de Merveil.png" alt="Merveil MAVOUNGOU">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="apropos">
+        <div class="container">
+            <h2>À propos</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Ma double expertise entrepreneur-collaborateur me permet d'intervenir avec pragmatisme : je comprends les contraintes du dirigeant (cash, priorités, urgences) ET les réalités du terrain (équipes, process, exécution).</p>
+                    <p>Mon approche : structurer sans rigidifier, digitaliser sans complexifier, accompagner sans dépendance.</p>
+                    <p>Je n'interviens pas pour compliquer. J'interviens pour clarifier, structurer et faire avancer. Pas de blabla. Pas de process bureaucratique. Juste des solutions qui fonctionnent, des équipes qui exécutent, des dirigeants qui pilotent.</p>
+                </div>
+                <div class="about-highlights">
+                    <h3>Ce qui me différencie</h3>
+                    <div class="highlight-item">
+                        <div class="highlight-icon"><i class="fas fa-eye"></i></div>
+                        <div>
+                            <h4>Double vision dirigeant-collaborateur</h4>
+                            <p>Empathie entrepreneuriale et efficacité opérationnelle</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon"><i class="fas fa-chart-line"></i></div>
+                        <div>
+                            <h4>Orientation résultats</h4>
+                            <p>Mes interventions se mesurent en chiffres concrets</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon"><i class="fas fa-cogs"></i></div>
+                        <div>
+                            <h4>Ancrage terrain fort</h4>
+                            <p>Je sais ce que "faire avec les moyens du bord" signifie</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="expertises">
+        <div class="container">
+            <h2>Mes expertises</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Structuration commerciale B2B</h3>
+                    <p>Process de vente de la prospection au closing. Pilotage de la performance (KPI actionnables, CRM, reporting décisionnel). Animation commerciale et montée en compétence des équipes.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Excellence opérationnelle</h3>
+                    <p>Diagnostic et optimisation des process métier. Mise en place d'outils d'automatisation pragmatiques (IA, NoCode/LowCode). Coordination entre vision stratégique et exécution terrain.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Environnements techniques</h3>
+                    <p>Cloud (Microsoft Azure, solutions souveraines). Intelligence Artificielle appliquée au business. SaaS B2B et écosystèmes complexes. Je traduis les enjeux techniques en valeur business concrète.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experiences" id="experiences">
+        <div class="container">
+            <h2>Expériences clés</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Depuis sept. 2025</div>
+                    <div class="timeline-content">
+                        <h3>DeepScales — Business Advisor</h3>
+                        <p>Accompagnement de gérants dans la transformation de leur modèle de gestion, du mode réactif vers des systèmes automatisés et pilotables en lien avec leurs besoins et contraintes terrains.</p>
+                        <ul>
+                            <li>Structuration et standardisation des processus métier</li>
+                            <li>Mise en place de systèmes de pilotage et d'aide à la décision</li>
+                            <li>Intégration d'IA pour automatiser des tâches répétitives</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Depuis oct. 2025</div>
+                    <div class="timeline-content">
+                        <h3>Cloud Temple — Account Manager</h3>
+                        <p>Gestion de portefeuille B2B — Cloud de confiance. Développement et gestion d'un portefeuille clients stratégiques dans un environnement Cloud exigeant (souveraineté, sécurité, conformité).</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-content">
+                        <h3>VoxNow — Bras droit du Gérant</h3>
+                        <p>Structuration & Go-to-Market d'une solution SaaS IA centralisant les communications des cabinets d'avocats (appels, SMS, vocal) en un seul outil.</p>
+                        <ul>
+                            <li>Pilotage stratégie commerciale et coordination Sales/Produit/Client</li>
+                            <li>Animation et structuration de l'équipe commerciale</li>
+                            <li>+250 abonnements souscrits en moins de 11 mois</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contactez-moi</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3>Disponibilité</h3>
+                        <p>Ouvert aux collaborations, missions de conseil et opportunités d'accompagnement stratégique.</p>
+                        <p>Ma manière de travailler : diagnostic rapide, priorités claires, mise en œuvre concrète, ajustements continus.</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Coordonnées</h3>
+                        <p><i class="fas fa-envelope" style="color: var(--orange-color); margin-right: 10px;"></i> contact@merveilmavoungou.com</p>
+                        <p><i class="fas fa-phone" style="color: var(--orange-color); margin-right: 10px;"></i> +33 1 23 45 67 89</p>
+                        <p><i class="fas fa-map-marker-alt" style="color: var(--orange-color); margin-right: 10px;"></i> Paris, France</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2 style="color: var(--white-color); border-bottom: 3px solid var(--orange-color);">Merveil MAVOUNGOU</h2>
+                    <p>Business Manager | Sales & Operations Strategist</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/merveil-mavoungou" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Merveil MAVOUNGOU. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real implementation, you would send this data to a server
+            // For this example, we'll just show an alert
+            alert(`Merci ${name} ! Votre message a été envoyé. Je vous répondrai dans les plus brefs délais.`);
+            
+            // Reset the form
+            contactForm.reset();
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.padding = '0 0';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '0';
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.08)';
+            }
+        });
+    </script>
+</body>
+</html>
