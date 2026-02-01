@@ -25,6 +25,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
@@ -552,6 +556,74 @@
                 margin-left: 0;
             }
         }
+
+        /* Formation & Certifications */
+.formation {
+    background-color: var(--white-color);
+}
+
+.formation-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.formation-card {
+    background-color: var(--gray-light);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.formation-card:hover {
+    transform: translateY(-8px);
+}
+
+.formation-card i {
+    font-size: 2.5rem;
+    color: var(--orange-color);
+    margin-bottom: 1rem;
+}
+
+.formation-card h3 {
+    margin-bottom: 1.5rem;
+    color: var(--black-color);
+}
+
+.formation-item {
+    margin-bottom: 20px;
+}
+
+.formation-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: var(--gray-dark);
+}
+
+.formation-item p {
+    color: var(--gray-medium);
+}
+
+.certification-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.certification-list li {
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: var(--gray-dark);
+}
+
+.formation-card.highlight {
+    background: linear-gradient(
+        135deg,
+        rgba(251, 155, 60, 0.08),
+        rgba(0, 187, 255, 0.08)
+    );
+}
+
     </style>
 </head>
 <body>
@@ -567,6 +639,7 @@
                 <li><a href="#apropos">À propos</a></li>
                 <li><a href="#expertises">Expertises</a></li>
                 <li><a href="#experiences">Expériences</a></li>
+                <li><a href="#formation">Formations et Certifications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -692,6 +765,55 @@
         </div>
     </section>
 
+    <!-- Formation & Certifications -->
+<section class="formation" id="formation">
+    <div class="container">
+        <h2>Formation & Certifications</h2>
+
+        <div class="formation-container">
+            <!-- Diplômes -->
+            <div class="formation-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Diplômes</h3>
+
+                <div class="formation-item">
+                    <h4>Master Business Development & Ingénierie d’Affaires</h4>
+                    <p><strong>INSEEC MSc</strong></p>
+                </div>
+
+                <div class="formation-item">
+                    <h4>Licence Professionnelle Maintenance Industrielle</h4>
+                    <p><strong>ENSP</strong></p>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="formation-card">
+                <i class="fas fa-certificate"></i>
+                <h3>Certifications</h3>
+
+                <ul class="certification-list">
+                    <li>📜 Microsoft AZ-900 — Azure Fundamentals</li>
+                    <li>📜 Microsoft AI-900 — AI Fundamentals</li>
+                    <li>📜 Sales Champions — Microsoft</li>
+                </ul>
+            </div>
+
+            <!-- Double culture -->
+            <div class="formation-card highlight">
+                <i class="fas fa-brain"></i>
+                <h3>Double culture</h3>
+                <p>
+                    Business stratégique & compréhension technique terrain.
+                    Capacité à faire le lien entre enjeux techniques complexes
+                    et décisions business actionnables.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
@@ -793,24 +915,67 @@
             });
         });
         
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // In a real implementation, you would send this data to a server
-            // For this example, we'll just show an alert
-            alert(`Merci ${name} ! Votre message a été envoyé. Je vous répondrai dans les plus brefs délais.`);
-            
-            // Reset the form
-            contactForm.reset();
-        });
+document.addEventListener("DOMContentLoaded", () => {
+
+    const form = document.getElementById("contactForm");
+
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const subjectInput = document.getElementById("subject");
+    const messageInput = document.getElementById("message");
+
+    const EMAIL_DESTINATION = "contact@merveilmavoungou.com";
+
+    form.addEventListener("submit", sendEmail);
+
+    function sendEmail(e) {
+        e.preventDefault();
+
+        // =========================
+        // VALIDATION
+        // =========================
+        if (
+            !nameInput.value.trim() ||
+            !emailInput.value.trim() ||
+            !subjectInput.value.trim() ||
+            !messageInput.value.trim()
+        ) {
+            alert("Merci de remplir tous les champs du formulaire.");
+            return;
+        }
+
+        if (!isValidEmail(emailInput.value)) {
+            alert("Adresse email invalide.");
+            return;
+        }
+
+        // =========================
+        // CONSTRUCTION EMAIL
+        // =========================
+        const subject = `Nouveau message — ${subjectInput.value}`;
+
+        const body = `
+Nom : ${nameInput.value}
+Email : ${emailInput.value}
+
+Message :
+${messageInput.value}
+        `;
+
+        // =========================
+        // MAILTO
+        // =========================
+        window.location.href =
+            `mailto:${EMAIL_DESTINATION}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // Reset formulaire
+        form.reset();
+    }
+
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+});
         
         // Header scroll effect
         window.addEventListener('scroll', () => {
